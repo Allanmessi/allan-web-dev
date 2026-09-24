@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Bom Paladar - Uma experiência a cada fatia</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#E53E3E',
+                            gold: '#DD6B20',
+                            dark: '#1A202C',
+                            yellow: '#D69E2E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Vanilla Tilt JS para Efeito 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <style>
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(229, 62, 62, 0.4);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #E53E3E, #D69E2E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 transition-colors duration-300 font-sans antialiased">
+
+    <!-- HEADER / CABEÇALHO -->
+    <header class="sticky top-0 z-50 bg-gray-900/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- LOGO -->
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center font-bold text-xl text-yellow-400 border-2 border-yellow-500 shadow-lg">
+                    BP
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider text-red-500">BOM PALADAR</span>
+                    <span class="text-xs text-yellow-500 font-medium">PIZZARIA</span>
+                </div>
+            </div>
+
+            <!-- NAVEGAÇÃO + BOTÃO TEMA -->
+            <div class="flex items-center space-x-6">
+                <nav class="hidden md:flex space-x-6 font-semibold">
+                    <a href="#menu" class="hover:text-red-500 transition-colors">Cardápio</a>
+                    <a href="#diferenciais" class="hover:text-red-500 transition-colors">Por que escolher</a>
+                    <a href="#avaliacoes" class="hover:text-red-500 transition-colors">Avaliações</a>
+                    <a href="#contato" class="hover:text-red-500 transition-colors">Contato</a>
+                </nav>
+
+                <!-- BOTÃO ALTERNAR TEMA (CLARO/ESCURO) -->
+                <button id="themeToggle" class="p-2 rounded-lg bg-gray-800 dark:bg-gray-800 border border-gray-700 text-yellow-400 hover:bg-gray-700 transition">
+                    <i class="fas font-solid fa-moon text-lg" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- CARROSSEL DE FOTOS / HERO -->
+        <section class="relative bg-gray-950 py-12 overflow-hidden border-b border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-8">
+                    <h1 class="text-4xl sm:text-6xl font-black text-gradient uppercase tracking-tight mb-4">
+                        “Mais que pizza, uma experiência a cada fatia”
+                    </h1>
+                    <a href="https://wa.me/5511999999999?text=ol%C3%A1%20gostaria%20de%20fazer%20um%20pedido%20com%20voc%C3%AAs%20%F0%9F%8D%95" 
+                       target="_blank"
+                       class="inline-flex items-center px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold text-lg rounded-full shadow-lg transform hover:scale-105 transition duration-300 glow-effect">
+                        <i class="fab fa-whatsapp text-2xl mr-3"></i> Fale pelo WhatsApp
+                    </a>
+                </div>
+
+                <!-- CARROSSEL CONTAINER -->
+                <div class="relative w-full max-w-4xl mx-auto h-80 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-800">
+                    <div id="carouselSlides" class="flex transition-transform duration-500 ease-out h-full">
+                        <div class="min-w-full h-full relative">
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Pizza artesanal 1">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-2xl">Massa crocante & recheio generoso</span>
+                            </div>
+                        </div>
+                        <div class="min-w-full h-full relative">
+                            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Pizza artesanal 2">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-2xl">Ingredientes frescos selecionados</span>
+                            </div>
+                        </div>
+                        <div class="min-w-full h-full relative">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Pizza artesanal 3">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-2xl">Aqueça a sua noite com o melhor sabor</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CONTROLES DO CARROSSEL -->
+                    <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CARDÁPIO INTERATIVO -->
+        <section id="menu" class="py-16 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gradient">Nossas Especialidades</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- ITEM 1 -->
+                    <div class="tilt-card bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col justify-between shadow-xl" data-tilt>
+                        <div>
+                            <div class="h-48 rounded-xl overflow-hidden mb-4">
+                                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500" alt="Pizza Calabreza">
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Calabresa Especial</h3>
+                            <p class="text-gray-400 text-sm mb-4">Molho artesanal, mussarela, calabresa fatiada, cebola e azeitonas pretas.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4 border-t border-gray-700 pt-4">
+                            <span class="text-2xl font-black text-yellow-500">R$ 49,90</span>
+                            <button onclick="fazerPedido('Pizza Calabresa Especial')" class="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition duration-300 shadow-md">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 2 -->
+                    <div class="tilt-card bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col justify-between shadow-xl" data-tilt>
+                        <div>
+                            <div class="h-48 rounded-xl overflow-hidden mb-4">
+                                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500" alt="Pizza Frango com Catupiry">
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Frango com Catupiry</h3>
+                            <p class="text-gray-400 text-sm mb-4">Peito de frango desfiado, molho especial e camada generosa de Catupiry original.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4 border-t border-gray-700 pt-4">
+                            <span class="text-2xl font-black text-yellow-500">R$ 54,90</span>
+                            <button onclick="fazerPedido('Pizza Frango com Catupiry')" class="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition duration-300 shadow-md">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 3 -->
+                    <div class="tilt-card bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col justify-between shadow-xl" data-tilt>
+                        <div>
+                            <div class="h-48 rounded-xl overflow-hidden mb-4">
+                                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500" alt="Pizza 4 Queijos">
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Quatro Queijos</h3>
+                            <p class="text-gray-400 text-sm mb-4">Combinação perfeita de mussarela, provolone, parmesão e gorgonzola cremoso.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4 border-t border-gray-700 pt-4">
+                            <span class="text-2xl font-black text-yellow-500">R$ 59,90</span>
+                            <button onclick="fazerPedido('Pizza Quatro Queijos')" class="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition duration-300 shadow-md">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIFERENCIAIS / POR QUE ESCOLHER A COLISEU / BOM PALADAR -->
+        <section id="diferenciais" class="py-16 bg-gray-950 border-t border-b border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12">
+                    Por que escolher a <span class="text-gradient">Bom Paladar</span>
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- DIFERENCIAL 1 -->
+                    <div class="tilt-card bg-gray-900 p-8 rounded-2xl border border-gray-800 text-center" data-tilt>
+                        <div class="w-16 h-16 bg-red-600/20 text-red-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Atendimento Especializado</h3>
+                        <p class="text-gray-400 text-sm">Equipe pronta para te atender com agilidade e cordialidade em todos os canais.</p>
+                    </div>
+
+                    <!-- DIFERENCIAL 2 -->
+                    <div class="tilt-card bg-gray-900 p-8 rounded-2xl border border-gray-800 text-center" data-tilt>
+                        <div class="w-16 h-16 bg-yellow-600/20 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                            <i class="fas fa-pizza-slice"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Pizzas de Alta Qualidade</h3>
+                        <p class="text-gray-400 text-sm">Ingredientes de marcas renomadas e preparação artesanal impecável.</p>
+                    </div>
+
+                    <!-- DIFERENCIAL 3 -->
+                    <div class="tilt-card bg-gray-900 p-8 rounded-2xl border border-gray-800 text-center" data-tilt>
+                        <div class="w-16 h-16 bg-green-600/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Serviços Atendidos Rapidamente</h3>
+                        <p class="text-gray-400 text-sm">Entrega rápida para que sua pizza chegue quentinha à sua mesa.</p>
+                    </div>
+
+                    <!-- DIFERENCIAL 4 -->
+                    <div class="tilt-card bg-gray-900 p-8 rounded-2xl border border-gray-800 text-center" data-tilt>
+                        <div class="w-16 h-16 bg-orange-600/20 text-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Forno em Alta Temperatura</h3>
+                        <p class="text-gray-400 text-sm">Assadas no ponto certo para garantir a crocância ideal da massa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AVALIAÇÕES DE CLIENTES -->
+        <section id="avaliacoes" class="py-16 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gradient">O Que Dizem Nossos Clientes</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 shadow-lg">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 italic mb-4">"A melhor pizza de Mairinque! A massa é incrível e o atendimento no Zap foi super rápido."</p>
+                        <span class="font-bold text-red-400">- Lucas M.</span>
+                    </div>
+
+                    <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 shadow-lg">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 italic mb-4">"Chegou quentinha! Recomendo demais a de Frango com Catupiry. Experiência nota 10."</p>
+                        <span class="font-bold text-red-400">- Amanda R.</span>
+                    </div>
+
+                    <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 shadow-lg">
+                        <div class="flex text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 italic mb-4">"Atendimento sensacional. Clicar no site e já mandar o pedido direto pro WhatsApp facilitou muito!"</p>
+                        <span class="font-bold text-red-400">- Carlos E.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER / RODAPÉ -->
+    <footer id="contato" class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h4 class="text-xl font-bold text-white mb-4">Contato & Endereço</h4>
+                <p class="mb-2"><i class="fas fa-map-marker-alt text-red-500 mr-2"></i> Chácaras Canguerinha, Mairinque - SP</p>
+                <p class="mb-2"><i class="fab fa-whatsapp text-green-500 mr-2"></i> WhatsApp: (11) 99999-9999</p>
+                <p><i class="fab fa-instagram text-pink-500 mr-2"></i> @pizzariabompaladar</p>
+            </div>
+
+            <div>
+                <h4 class="text-xl font-bold text-white mb-4">Horário de Funcionamento</h4>
+                <p class="mb-2">Quarta a Domingo: 19:00 às 23:00</p>
+                <p class="text-red-400 font-semibold">Segunda-Feira e Terça-Feira: Fechados</p>
+            </div>
+
+            <div>
+                <h4 class="text-xl font-bold text-white mb-4">Mapa Digital</h4>
+                <div class="w-full h-32 bg-gray-900 rounded-xl border border-gray-800 flex items-center justify-center text-gray-500">
+                    <a href="https://maps.google.com" target="_blank" class="hover:text-red-400 flex items-center">
+                        <i class="fas fa-map-marked-alt text-2xl mr-2"></i> Ver localização no Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center pt-8 border-t border-gray-900 text-sm">
+            &copy; Pizzaria Bom Paladar. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/5511999999999?text=ol%C3%A1%20gostaria%20de%20fazer%20um%20pedido%20com%20voc%C3%AAs%20%F0%9F%8D%95" 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-transform duration-300 hover:scale-110 flex items-center justify-center glow-effect">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- SCRIPTS JAVASCRIPT -->
+    <script>
+        // Função para disparar pedido direto no WhatsApp
+        function fazerPedido(nomePizza) {
+            const mensagem = `olá gostaria de fazer um pedido com vocês: ${nomePizza} 🍕`;
+            const url = `https://wa.me/5511999999999?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+
+        // Carrossel
+        const slides = document.getElementById('carouselSlides');
+        const totalSlides = 3;
+        let index = 0;
+
+        function updateCarousel() {
+            slides.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            index = (index + 1) % totalSlides;
+            updateCarousel();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            index = (index - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+
+        setInterval(() => {
+            index = (index + 1) % totalSlides;
+            updateCarousel();
+        }, 4000);
+
+        // Dark / Light Mode Toggle
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // Inicializar VanillaTilt para efeito 3D nos cards
+        VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2
+        });
+    </script>
+</body>
+</html>
